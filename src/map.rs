@@ -37,6 +37,27 @@ impl Map {
             }
         }
     }
+
+    // Keep track of player and make sure they stay in bounds.
+    pub fn in_bounds(&self, point: Point) -> bool {
+        point.x >= 0 && point.x < SCREEN_WIDTH && point.y >= 0 && point.y < SCREEN_HEIGHT
+    }
+
+    // Check a player can in fact enter the tile.
+    // True if it is in bounds and is a tile of type floor.
+    pub fn can_enter_tile(&self, point: Point) -> bool {
+        self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)] == TileType::Floor
+    }
+
+    // Determine a tiles coordinates and indicate an error if the requested 
+    // coordinates are outside the map boundary.
+    pub fn try_idx(&self, point: Point) -> Option<usize> {
+        if !self.in_bounds(point) {
+            None
+        } else {
+            Some(map_idx(point.x, point.y))
+        }
+    }
 }
 
 // Add a public function to calculate a tile index.
