@@ -1,45 +1,24 @@
 #![warn(clippy::all, clippy::pedantic)]
 
 mod map;
+mod state;
 mod prelude {
     pub use bracket_lib::prelude::*;
     pub const SCREEN_WIDTH: i32 = 80;
     pub const SCREEN_HEIGHT: i32 = 50;
     pub use crate::map::*;
+    pub use crate::state::*;
 }
 
 use prelude::*;
 
-struct State {
-    score: i32,
-}
-
-impl State {
-    fn new() -> Self {
-        State {
-            score: 0,
-        }
-    }
-}
-
-// bracket-lit defines a Trait named GameState
-// for games state structures. Requires object implement tick().
-// Implement a trait similar to implementing a method
-// on a struct. You implement the trait for the struct
-// and define functions which the Trait expects, here tick().
-impl GameState for State {
-    // Takes a mutable instance of self and a mutable context of type BTerm.
-    fn tick(&mut self, ctx: &mut BTerm) {
-        ctx.cls();
-        ctx.print(1, 1, "Hello, Bracket Terminal!");
-    }
-}
-
 fn main() -> BError {
-    println!("Hello, world!");
+    println!("main() is running!");
+
 
     let context = BTermBuilder::simple80x50()
                                 .with_title("Dungeon Crawl")
+                                .with_fps_cap(30.0)
                                 .build()?;
 
     main_loop(context, State::new())
