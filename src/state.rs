@@ -1,14 +1,16 @@
 use bracket_lib::prelude::*;
-use crate::map::*;
+use crate::{map::*, player::Player, SCREEN_HEIGHT, SCREEN_WIDTH};
 
 pub struct State {
     pub map: Map,
+    pub player: Player,
 }
 
 impl State {
     pub fn new() -> Self {
-        State {
+        Self {
             map: Map::new(),
+            player: Player::new(Point::new(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)),
         }
     }
 }
@@ -23,5 +25,6 @@ impl GameState for State {
     fn tick(&mut self, ctx: &mut BTerm) {
         ctx.cls();
         self.map.render(ctx);
+        self.player.render(ctx);
     }
 }
