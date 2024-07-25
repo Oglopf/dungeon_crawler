@@ -9,7 +9,7 @@ mod prelude {
     pub const SCREEN_HEIGHT: i32 = 50;
     pub use crate::map::*;
     pub use crate::state::*;
-    pub use crate::player:*;
+    pub use crate::player::*;
 }
 
 use prelude::*;
