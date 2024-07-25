@@ -3,6 +3,7 @@
 mod map;
 mod state;
 mod player;
+mod map_builders;
 mod prelude {
     pub use bracket_lib::prelude::*;
     pub const SCREEN_WIDTH: i32 = 80;
@@ -10,6 +11,7 @@ mod prelude {
     pub use crate::map::*;
     pub use crate::state::*;
     pub use crate::player::*;
+    pub use crate::map_builders::*;
 }
 
 use prelude::*;
