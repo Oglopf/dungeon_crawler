@@ -6,9 +6,7 @@ pub struct Player {
 
 impl Player {
     pub fn new(position: Point) -> Self {
-        Self {
-            position
-        }
+        Self { position }
     }
 
     pub fn render(&self, ctx: &mut BTerm) {
@@ -29,7 +27,7 @@ impl Player {
                 VirtualKeyCode::Right => Point::new(1, 0),
                 VirtualKeyCode::Up => Point::new(0, -1),
                 VirtualKeyCode::Down => Point::new(0, 1),
-                _ => Point::zero()
+                _ => Point::zero(),
             };
             let new_position = self.position + delta;
             if map.can_enter_tile(new_position) {

@@ -1,5 +1,5 @@
-use bracket_lib::prelude::*;
 use crate::{map::*, player::Player, SCREEN_HEIGHT, SCREEN_WIDTH};
+use bracket_lib::prelude::*;
 
 pub struct State {
     pub map: Map,
