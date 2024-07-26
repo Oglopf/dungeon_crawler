@@ -13,7 +13,7 @@ impl State {
 
         Self {
             map: map_builder.map,
-            player: Player::new(Point::new(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)),
+            player: Player::new(map_builder.player_start),
         }
     }
 }
