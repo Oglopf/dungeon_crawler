@@ -14,7 +14,7 @@ pub struct Map {
 impl Map {
     pub fn new() -> Self {
         Self {
-            // vec is tiled with floor tiles. Same floor 
+            // vec is tiled with floor tiles. Same floor
             // tile over all vectors.
             tiles: vec![TileType::Floor; NUM_TILES],
         }
@@ -49,7 +49,7 @@ impl Map {
         self.in_bounds(point) && self.tiles[map_idx(point.x, point.y)] == TileType::Floor
     }
 
-    // Determine a tiles coordinates and indicate an error if the requested 
+    // Determine a tiles coordinates and indicate an error if the requested
     // coordinates are outside the map boundary.
     pub fn try_idx(&self, point: Point) -> Option<usize> {
         if !self.in_bounds(point) {
@@ -62,9 +62,8 @@ impl Map {
 
 // Add a public function to calculate a tile index.
 pub fn map_idx(x: i32, y: i32) -> usize {
-    // Using row-first encoding, so each (x, y) is converted into 
+    // Using row-first encoding, so each (x, y) is converted into
     // a vector at an index. The formula is what gives that index.
     // map_idx: (x, y) -> idx
     ((y * SCREEN_WIDTH) + x) as usize // convert result to usize
 }
-
