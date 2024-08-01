@@ -24,6 +24,7 @@ impl GameState for State {
     // Takes a mutable instance of self and a mutable context of type BTerm.
     fn tick(&mut self, ctx: &mut BTerm) {
         ctx.cls();
+        self.player.update(ctx, &self.map);
         self.map.render(ctx);
         self.player.render(ctx);
     }
